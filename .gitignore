@@ -21,3 +21,6 @@
 # IDE
 **/.vscode/
 **/.idea/
+
+SecurityKey.pem
+pymysql-layer.zip
