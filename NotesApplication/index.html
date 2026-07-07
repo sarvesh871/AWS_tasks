@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AWS Notes Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <h1>☁ AWS Notes Manager</h1>
+
+            <p>Create, Read, Update and Delete Notes stored securely on Amazon S3.</p>
+
+        </header>
+
+        <!-- Left Panel -->
+
+        <section class="editor">
+
+            <h2>Create / Update Note</h2>
+
+            <label>Filename</label>
+
+            <input
+                type="text"
+                id="filename"
+                placeholder="example.txt">
+
+            <label>Content</label>
+
+            <textarea
+                id="content"
+                placeholder="Write your notes here..."></textarea>
+
+            <div class="button-group">
+
+                <button id="saveBtn">
+                    💾 Save
+                </button>
+
+                <button id="updateBtn">
+                    ✏ Update
+                </button>
+
+                <button id="clearBtn">
+                    🧹 Clear
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Right Panel -->
+
+        <section class="notes">
+
+            <div class="notes-header">
+
+                <h2>Available Notes</h2>
+
+                <button id="refreshBtn">
+                    🔄 Refresh
+                </button>
+
+            </div>
+
+            <div id="notesList">
+
+                <!-- JavaScript will populate this -->
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Preview -->
+
+    <section class="preview">
+
+        <h2>Selected Note</h2>
+
+        <div class="preview-card">
+
+            <h3 id="previewFilename">
+                No Note Selected
+            </h3>
+
+            <pre id="previewContent">
+Select a note to view it here.
+            </pre>
+
+        </div>
+
+    </section>
+
+    <!-- Toast Notification -->
+
+    <div
+        id="toast"
+        class="toast">
+
+        Action Completed
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

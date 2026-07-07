@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animal Recognition System | AWS Rekognition</title>
+
+<!-- Google Font: Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== TOP NAVIGATION ==================== -->
+<header class="navbar">
+  <div class="navbar__left">
+    <span class="navbar__logo">🐾</span>
+    <span class="navbar__title">Animal Recognition</span>
+  </div>
+  <div class="navbar__right">
+    <i class="bi bi-cloud-check"></i>
+    <span>Powered by AWS Rekognition</span>
+  </div>
+</header>
+
+<!-- ==================== HERO SECTION ==================== -->
+<section class="hero">
+  <h1 class="hero__title">Animal Recognition System</h1>
+  <p class="hero__subtitle">Upload an image and identify animals using Amazon Rekognition.</p>
+</section>
+
+<!-- ==================== MAIN LAYOUT ==================== -->
+<main class="main-layout">
+
+  <!-- LEFT SIDE (70%) -->
+  <div class="main-layout__left">
+
+    <!-- ---------- UPLOAD CARD ---------- -->
+    <section class="card upload-card" id="uploadCard">
+      <h2 class="card__heading"><i class="bi bi-cloud-arrow-up"></i> Upload Image</h2>
+
+      <div class="dropzone" id="dropzone" tabindex="0">
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,.png" hidden>
+
+        <div class="dropzone__empty" id="dropzoneEmpty">
+          <i class="bi bi-image dropzone__icon"></i>
+          <p class="dropzone__text">Drag &amp; drop an image here</p>
+          <p class="dropzone__subtext">or click to browse &middot; JPG, JPEG, PNG</p>
+        </div>
+
+        <div class="dropzone__preview hidden" id="dropzonePreview">
+          <img id="previewImage" src="" alt="Selected animal image preview">
+          <p class="dropzone__filename" id="previewFilename"></p>
+        </div>
+      </div>
+
+      <button class="btn btn--primary btn--block" id="analyzeBtn" disabled>
+        <i class="bi bi-search-heart"></i>
+        <span>Analyze Image</span>
+      </button>
+    </section>
+
+    <!-- ---------- RESULTS CARD ---------- -->
+    <section class="card results-card hidden" id="resultsCard">
+      <h2 class="card__heading"><i class="bi bi-graph-up-arrow"></i> Detection Results</h2>
+
+      <!-- Summary Cards -->
+      <div class="summary-grid">
+        <div class="summary-card">
+          <i class="bi bi-diagram-3 summary-card__icon"></i>
+          <p class="summary-card__value" id="totalSpecies">0</p>
+          <p class="summary-card__label">Total Species</p>
+        </div>
+        <div class="summary-card">
+          <i class="bi bi-collection summary-card__icon"></i>
+          <p class="summary-card__value" id="totalAnimals">0</p>
+          <p class="summary-card__label">Total Animals</p>
+        </div>
+        <div class="summary-card">
+          <i class="bi bi-stopwatch summary-card__icon"></i>
+          <p class="summary-card__value" id="analysisTime">--</p>
+          <p class="summary-card__label">Analysis Time</p>
+        </div>
+      </div>
+
+      <!-- Image Preview -->
+      <div class="result-image-wrap">
+        <img id="resultImage" src="" alt="Analyzed animal image">
+      </div>
+
+      <!-- Detection Table -->
+      <div class="table-wrap">
+        <table class="detection-table">
+          <thead>
+            <tr>
+              <th>Animal</th>
+              <th>Count</th>
+              <th>Confidence</th>
+            </tr>
+          </thead>
+          <tbody id="detectionTableBody">
+            <!-- rows injected by script.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- RIGHT SIDE (30%) -->
+  <aside class="main-layout__right">
+    <section class="card history-card">
+      <h2 class="card__heading"><i class="bi bi-clock-history"></i> History</h2>
+      <div class="history-list" id="historyList">
+        <p class="history-empty" id="historyEmpty">No previous analyses yet.</p>
+      </div>
+    </section>
+  </aside>
+
+</main>
+
+<!-- ==================== LOADING OVERLAY ==================== -->
+<div class="loading-overlay hidden" id="loadingOverlay">
+  <div class="loading-overlay__content">
+    <div class="spinner"></div>
+    <p class="loading-overlay__message" id="loadingMessage">Uploading Image...</p>
+  </div>
+</div>
+
+<!-- ==================== TOAST CONTAINER ==================== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

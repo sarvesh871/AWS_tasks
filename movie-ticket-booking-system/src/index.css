@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+/* Utility: gives an element a torn-ticket-stub edge using a repeating
+   radial-gradient mask along the top — used on the booking panel to
+   reinforce the "movie ticket" concept the whole app is built on. */
+.ticket-edge {
+  position: relative;
+}
+
+.ticket-edge::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background-image: radial-gradient(circle at 10px 0, transparent 9px, var(--edge-color, #0a0b0f) 10px);
+  background-size: 20px 20px;
+  background-repeat: repeat-x;
+  transform: translateY(-100%);
+}
+
+/* Subtle number/monospace styling shared by seat codes, prices, times */
+.mono-data {
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 0.02em;
+}
+
+/* Custom focus ring that matches the accent palette */
+:focus-visible {
+  outline: 2px solid #f8395a;
+  outline-offset: 2px;
+}

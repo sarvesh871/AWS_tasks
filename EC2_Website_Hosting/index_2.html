@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Auto Deployment Demo</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:Arial,Helvetica,sans-serif;
+            background:#0f172a;
+            color:white;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .card{
+            width:700px;
+            padding:40px;
+            border-radius:20px;
+            background:#1e293b;
+            text-align:center;
+            box-shadow:0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        h1{
+            color:#38bdf8;
+            margin-bottom:10px;
+        }
+
+        h2{
+            color:#22c55e;
+        }
+
+        .status{
+            display:inline-block;
+            margin-top:25px;
+            padding:12px 25px;
+            background:#16a34a;
+            border-radius:10px;
+            font-size:20px;
+            font-weight:bold;
+        }
+
+        .info{
+            margin-top:30px;
+            text-align:left;
+            line-height:1.8;
+            font-size:18px;
+        }
+
+        footer{
+            margin-top:35px;
+            color:#94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>🚀 AWS Automatic Website Deployment</h1>
+
+    <h2>Deployment Successful</h2>
+
+    <div class="status">
+        Version 2
+    </div>
+
+    <div class="info">
+        <p><strong>Bucket:</strong> ec2-instance-website-hosting-1232</p>
+
+        <p><strong>Deployment Pipeline:</strong></p>
+
+        <ol>
+            <li>Upload HTML to Amazon S3</li>
+            <li>S3 triggers AWS Lambda</li>
+            <li>Lambda downloads the updated file</li>
+            <li>Lambda connects securely to EC2 using SSH</li>
+            <li>File is uploaded using SFTP</li>
+            <li>Website is automatically updated</li>
+        </ol>
+
+        <p><strong>Last Update:</strong></p>
+
+        <h3>28 June 2026 - 4:26 PM</h3>
+
+    </div>
+
+    <footer>
+        Developed by Sarvesh
+    </footer>
+
+</div>
+
+</body>
+</html>

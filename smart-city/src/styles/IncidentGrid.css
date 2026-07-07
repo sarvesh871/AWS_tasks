@@ -1,0 +1,34 @@
+.incident-grid-section {
+  padding: 24px 0 100px;
+}
+
+.incident-grid-section__header {
+  margin-bottom: 28px;
+}
+
+.incident-grid-section__header h2 {
+  font-size: clamp(22px, 3vw, 28px);
+  margin-bottom: 8px;
+}
+
+.incident-grid-section__header p {
+  font-size: 14px;
+}
+
+.incident-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+@media (max-width: 980px) {
+  .incident-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .incident-grid {
+    grid-template-columns: 1fr;
+  }
+}

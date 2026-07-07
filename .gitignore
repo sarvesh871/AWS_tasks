@@ -1,0 +1,23 @@
+# Dependencies
+**/node_modules/
+
+# Build output
+**/dist/
+**/build/
+**/.next/
+**/coverage/
+
+# Logs
+**/*.log
+
+# Environment files
+**/.env
+**/.env.*
+
+# OS files
+**/.DS_Store
+**/Thumbs.db
+
+# IDE
+**/.vscode/
+**/.idea/

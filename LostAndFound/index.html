@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lost &amp; Found Portal</title>
+
+  <!-- Google Fonts: Space Grotesk for display, Inter for body/utility -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       Sticky, glass background, logo + nav links
+  ============================================================= -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#home" class="navbar__logo">
+        <span class="navbar__logo-icon"><i class="fa-solid fa-tag"></i></span>
+        <span class="navbar__logo-text">Lost<span class="accent">&amp;</span>Found</span>
+      </a>
+
+      <nav class="navbar__links" id="navLinks">
+        <a href="#home" class="navbar__link">Home</a>
+        <a href="#report" class="navbar__link">Report Item</a>
+        <a href="#items" class="navbar__link">Available Items</a>
+      </nav>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         HERO SECTION
+    ============================================================= -->
+    <section class="hero" id="home">
+      <div class="hero__bg-glow"></div>
+      <div class="hero__inner">
+        <div class="hero__content">
+          <span class="hero__eyebrow"><i class="fa-solid fa-circle-check"></i> Community claim desk</span>
+          <h1 class="hero__title">
+            Lost something?<br />
+            <span class="accent-text">Find it here.</span>
+          </h1>
+          <p class="hero__description">
+            One shared desk for everything misplaced on campus or around town.
+            Report what you've found in a minute, or search the shelf to claim
+            what's yours — no front desk, no waiting.
+          </p>
+          <div class="hero__actions">
+            <a href="#report" class="btn btn--primary">
+              <i class="fa-solid fa-box-archive"></i> Report an item
+            </a>
+            <a href="#items" class="btn btn--ghost">
+              <i class="fa-solid fa-magnifying-glass"></i> Browse items
+            </a>
+          </div>
+
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <span class="hero__stat-num" id="statTotal">0</span>
+              <span class="hero__stat-label">Items on the shelf</span>
+            </div>
+            <div class="hero__stat-divider"></div>
+            <div class="hero__stat">
+              <span class="hero__stat-num">100%</span>
+              <span class="hero__stat-label">Community reported</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modern illustration built purely from CSS shapes + icons -->
+        <div class="hero__art" aria-hidden="true">
+          <div class="claim-card claim-card--back">
+            <i class="fa-solid fa-key"></i>
+          </div>
+          <div class="claim-card claim-card--mid">
+            <i class="fa-solid fa-umbrella"></i>
+          </div>
+          <div class="claim-card claim-card--front">
+            <div class="claim-card__hole"></div>
+            <i class="fa-solid fa-wallet"></i>
+            <span class="claim-card__tag">CLAIM TAG #0142</span>
+          </div>
+          <div class="hero__orbit hero__orbit--one"><i class="fa-solid fa-glasses"></i></div>
+          <div class="hero__orbit hero__orbit--two"><i class="fa-solid fa-mobile-screen"></i></div>
+          <div class="hero__orbit hero__orbit--three"><i class="fa-solid fa-book"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         REPORT ITEM FORM
+    ============================================================= -->
+    <section class="report" id="report">
+      <div class="section-inner">
+        <div class="section-head">
+          <span class="section-eyebrow">Found something?</span>
+          <h2 class="section-title">Report an item</h2>
+          <p class="section-subtitle">
+            A few details and a photo are all it takes to reunite an item with its owner.
+          </p>
+        </div>
+
+        <form class="report-card glass-card" id="reportForm" novalidate>
+          <div class="report-card__grid">
+
+            <!-- Image upload + preview -->
+            <div class="upload-field">
+              <label for="itemImage" class="field-label">Photo of the item</label>
+              <div class="upload-dropzone" id="uploadDropzone">
+                <input
+                  type="file"
+                  id="itemImage"
+                  name="itemImage"
+                  accept="image/*"
+                  class="upload-input"
+                />
+                <div class="upload-placeholder" id="uploadPlaceholder">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  <p><strong>Click to upload</strong> or drag a photo here</p>
+                  <span>PNG, JPG, or WEBP</span>
+                </div>
+                <img id="imagePreview" class="upload-preview" alt="Selected item preview" hidden />
+                <button type="button" class="upload-remove" id="removeImageBtn" hidden aria-label="Remove image">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              <span class="field-error" id="errorImage"></span>
+            </div>
+
+            <!-- Text fields -->
+            <div class="text-fields">
+              <div class="field">
+                <label for="itemName" class="field-label">Item name</label>
+                <div class="field-input-wrap">
+                  <i class="fa-solid fa-shapes"></i>
+                  <input type="text" id="itemName" name="itemName" placeholder="e.g. Black leather wallet" />
+                </div>
+                <span class="field-error" id="errorItemName"></span>
+              </div>
+
+              <div class="field">
+                <label for="itemLocation" class="field-label">Found at</label>
+                <div class="field-input-wrap">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <input type="text" id="itemLocation" name="itemLocation" placeholder="e.g. Library, 2nd floor" />
+                </div>
+                <span class="field-error" id="errorItemLocation"></span>
+              </div>
+
+              <div class="field">
+                <label for="concernPerson" class="field-label">Hand it to / contact</label>
+                <div class="field-input-wrap">
+                  <i class="fa-solid fa-user"></i>
+                  <input type="text" id="concernPerson" name="concernPerson" placeholder="e.g. Front desk - Asha" />
+                </div>
+                <span class="field-error" id="errorConcernPerson"></span>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--block" id="submitReportBtn">
+                <span class="btn__label"><i class="fa-solid fa-paper-plane"></i> Submit report</span>
+                <span class="btn__spinner" hidden><span class="spinner"></span> Uploading…</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEARCH SECTION
+    ============================================================= -->
+    <section class="search-section" id="search">
+      <div class="section-inner">
+        <div class="search-bar glass-card">
+          <i class="fa-solid fa-magnifying-glass search-bar__icon"></i>
+          <input
+            type="text"
+            id="searchInput"
+            class="search-bar__input"
+            placeholder="Search by item name… e.g. Wallet"
+            autocomplete="off"
+          />
+          <button type="button" class="btn btn--primary search-bar__btn" id="searchBtn">
+            Search
+          </button>
+          <button type="button" class="search-bar__clear" id="clearSearchBtn" hidden aria-label="Clear search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ITEMS GRID
+    ============================================================= -->
+    <section class="items" id="items">
+      <div class="section-inner">
+        <div class="section-head section-head--row">
+          <div>
+            <span class="section-eyebrow">The shelf</span>
+            <h2 class="section-title">Available items</h2>
+          </div>
+          <button class="btn btn--ghost btn--small" id="refreshBtn">
+            <i class="fa-solid fa-rotate"></i> Refresh
+          </button>
+        </div>
+
+        <!-- Loading state -->
+        <div class="state-block" id="itemsLoading" hidden>
+          <span class="spinner spinner--lg"></span>
+          <p>Loading items…</p>
+        </div>
+
+        <!-- Empty state -->
+        <div class="state-block" id="itemsEmpty" hidden>
+          <div class="empty-illustration">
+            <i class="fa-solid fa-box-open"></i>
+          </div>
+          <p class="state-block__title">No reported items available.</p>
+          <p class="state-block__subtitle">Once someone reports a found item, it'll show up right here.</p>
+        </div>
+
+        <!-- Grid of item cards (populated by script.js) -->
+        <div class="items-grid" id="itemsGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================= -->
+  <footer class="footer">
+    <div class="section-inner footer__inner">
+      <div class="footer__brand">
+        <span class="navbar__logo-icon"><i class="fa-solid fa-tag"></i></span>
+        <span class="navbar__logo-text">Lost<span class="accent">&amp;</span>Found</span>
+      </div>
+      <p class="footer__tagline">A small desk for returning things to the people who lost them.</p>
+      <p class="footer__copy">&copy; <span id="footerYear"></span> Lost &amp; Found Portal. Built for the community.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       GLOBAL OVERLAYS: full-page loader + toast container
+  ============================================================= -->
+  <div class="global-loader" id="globalLoader" hidden>
+    <span class="spinner spinner--lg"></span>
+  </div>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Delete confirmation modal -->
+  <div class="modal-overlay" id="confirmModal" hidden>
+    <div class="modal glass-card">
+      <i class="fa-solid fa-triangle-exclamation modal__icon"></i>
+      <h3 class="modal__title">Remove this item?</h3>
+      <p class="modal__text">This will permanently delete the report from the shelf. This can't be undone.</p>
+      <div class="modal__actions">
+        <button class="btn btn--ghost" id="cancelDeleteBtn">Cancel</button>
+        <button class="btn btn--danger" id="confirmDeleteBtn">Delete item</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
