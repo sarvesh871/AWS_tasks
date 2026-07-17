@@ -1,0 +1,27 @@
+.submit-page {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-panel {
+  width: 100%;
+  max-width: 640px;
+  padding-bottom: 28px;
+  animation: popIn var(--transition-slow);
+}
+
+.submit-form {
+  margin-top: 12px;
+}
+
+.submit-btn {
+  margin: 8px 28px 0;
+  width: calc(100% - 56px);
+}
+
+@media (max-width: 640px) {
+  .submit-btn {
+    width: calc(100% - 36px);
+    margin: 8px 18px 0;
+  }
+}

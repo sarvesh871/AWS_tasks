@@ -1,0 +1,32 @@
+.state-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 48px 28px;
+}
+
+.state-icon {
+  font-size: 2.4rem;
+  margin-bottom: 4px;
+}
+
+.state-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.state-description {
+  font-size: 0.88rem;
+  max-width: 360px;
+}
+
+.error-state .state-title {
+  color: var(--color-danger);
+}
+
+.error-state .btn {
+  margin-top: 12px;
+}
